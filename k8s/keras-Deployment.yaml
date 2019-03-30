@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keras-deployment
+  labels:
+    app: keras
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keras
+  template:
+    metadata:
+      labels:
+        app: keras
+    spec:        
+      containers:
+      - name: keras
+        image: keras
+        imagePullPolicy: Never 
+        ports:
+        - containerPort: 8888
+          name: jupyter
+        - containerPort: 6006
+          name: tensorboard
+        volumeMounts:
+        - name: notebooks
+          mountPath: /tf/notebooks
+      volumes:
+      - name: notebooks
+        hostPath:
+          path: /home/docker/Kaggle-Walmart-fcst-tensorflow/src
+          type: Directory
+     
