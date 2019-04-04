@@ -1,10 +1,42 @@
 Here are notes of ideas explored during the project
-4/2/2019 DataPreparation. It puts together all the features we have and also dummifies some fields. 
+4/2/2019 DataPreparation. 
+	It puts together all the features we have and also dummifies some fields. 
 	Tranformed date to year and weekofyear to reflect seasonality.
 	Pending: work with NaN and transform features to floats [0,1]
-4/3/2019 GenerateDates. From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
+4/3/2019 GenerateDates. 
+	From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
 	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
 		dfresult.Year.astype(str).add('-5') ,format='%W%Y-%w')
 	The reason of the failure is that 2012 has 53 weeks under ISO rules. 
 	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try to reverse in the code above it correctly says week 1 is 1/11/2013
 	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result
+4/4/2019 SalesAdjustment.
+	Sales in holidays are weighted 5 times other weeks - worth to have them right.
+	Super Bowl, Labor Day and Thanksgiving always happen in the same day of the week so sales are accurately represented in weeks 6. 36 and 47.
+	That's not the case for Christmas, which is on Dec 25th. Luckily always hapens in week 52, that's good. 
+	Below is a detail of Dec per year with the weeks ending on Friday, as is the date format used in the competition.
+Dec 2010
+	#	S	S	M	T	W	X	F
+	48					1	2	3
+	49	4	5	6	7	8	9	10
+	50	11	12	13	14	15	16	17
+	51	18	19	20	21	22	23	24
+	52	25	26	27	28	29	30	31	*IsHoliday
+Dec 2011
+	#	S	S	M	T	W	X	F
+	48						1	2
+	49	3	4	5	6	7	8	9
+	50	10	11	12	13	14	15	16
+	51	17	18	19	20	21	22	23
+	52	24	25	26	27	28	29	30	*IsHoliday
+	1	31
+Dec 2012
+	#	S	S	M	T	W	X	F
+	49	1	2	3	4	5	6	7
+	50	8	9	10	11	12	13	14
+	51	15	16	17	18	19	20	21
+	52	22	23	24	25	26	27	28	*IsHoliday
+	1	29	30	31
+	
+	As you can see week 52 has no day of sales (nobody buys on the 25th) on 2010, 1 day on 2011 and 3 days o 2012.
+	We are going to make some sales adjustments so we can compare apple with apples and the sales data is aligned over years on the same week
