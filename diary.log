@@ -1,0 +1,10 @@
+Here are notes of ideas explored during the project
+4/2/2019 DataPreparation. It puts together all the features we have and also dummifies some fields. 
+	Tranformed date to year and weekofyear to reflect seasonality.
+	Pending: work with NaN and transform features to floats [0,1]
+4/3/2019 GenerateDates. From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
+	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
+		dfresult.Year.astype(str).add('-5') ,format='%W%Y-%w')
+	The reason of the failure is that 2012 has 53 weeks under ISO rules. 
+	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try to reverse in the code above it correctly says week 1 is 1/11/2013
+	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result
