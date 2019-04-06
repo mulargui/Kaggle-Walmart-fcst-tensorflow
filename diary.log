@@ -39,7 +39,7 @@ Dec 2012
 	1	29	30	31
 	
 	As you can see week 52 has no day of sales (nobody buys on the 25th) on 2010, 1 day on 2011 and 3 days o 2012.
-	We are going to make some sales adjustments so we can compare apple with apples and the sales data is aligned over years on the same week.
+	We are going to make some sales adjustments so we can compare apples with apples and the sales data is aligned over years on the same week.
 	
 	Weekly sales increments vs prev week
 	2010. week 49 +11.5%
@@ -51,6 +51,7 @@ Dec 2012
 	2011. week 50 +8%
 	2011. week 51 +28.1% (hottest week)
 	2011. week 52 -40% (returns)
+	
 	Assumptions:
 	3 weeks of sales for christmas: Dec 4th - Dec 24th
 	Week 52 always has 3 days of sales (as in 2012) - hot sales days
@@ -64,5 +65,3 @@ Dec 2012
 		dailysales = sales on 49 + 50 + 51 +52 /21
 		week 52 += 2 * dailysales
 		week 49 -= 2 * dailysales
-	
-	
