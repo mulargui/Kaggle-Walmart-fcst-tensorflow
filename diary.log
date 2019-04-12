@@ -68,9 +68,14 @@ Dec 2012
 		week 49 -= 2 * dailysales
 4/10/2019. Looks like Keras works better and faster with float32 instead of float64
 	https://www.quora.com/When-should-I-use-tf-float32-vs-tf-float64-in-TensorFlow
-4/11/2019. Removed 7 features with NaNs to have a working model and experiment with NN models, epcohs,...
+4/11/2019. Removed 7 features with NaNs to have a working model and experiment with NN models, epochs,...
 	We'll go back to NaNs later.
-	
+4/11/2019. First submission sets me in the 612 position
+	x_train, x_test, y_train, y_test = train_test_split(x, y,test_size=0.2)
+	model.add(Dense(units=7, activation='relu', input_dim=12))
+	model.add(Dense(units=1, activation='linear'))
+	model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
+	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=25)
 	
 	
 	
