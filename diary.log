@@ -3,13 +3,14 @@ Here are notes of ideas explored during the project
 	It puts together all the features we have and also dummifies and normalizes fields. 
 	Tranformed date to year and weekofyear to reflect seasonality.
 	Pending: work with NaN and transform features to floats [0,1]
-4/3/2019 GenerateDates. 
+4/3/2019 ExploreDates. 
 	From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
 	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
 		dfresult.Year.astype(str).add('-5') ,format='%W%Y-%w')
 	The reason of the failure is that 2012 has 53 weeks under ISO rules. 
 	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try to reverse in the code above it correctly says week 1 is 1/11/2013
 	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result
+	Update: I was able to regenerate the final result without the help of this file - deleting dates.csv
 4/4/2019 Sales Adjustments in DataPreparation
 	Sales in holidays are weighted 5 times other weeks - worth to have them right.
 	Super Bowl, Labor Day and Thanksgiving always happen in the same day of the week so sales are accurately represented in weeks 6. 36 and 47.
@@ -65,3 +66,5 @@ Dec 2012
 		dailysales = sales on 49 + 50 + 51 +52 /21
 		week 52 += 2 * dailysales
 		week 49 -= 2 * dailysales
+4/10/2019. Looks like Keras works better and faster with float32 instead of float64
+	https://www.quora.com/When-should-I-use-tf-float32-vs-tf-float64-in-TensorFlow
