@@ -3,7 +3,7 @@ Kaggle-Walmart-fcst-tensorflow
 Reimplementation of Kaggle's Walmart sales forecast challenge using TensorFlow, Keras and NN.
 
 Previous implementations:\
-https://github.com/mulargui/Kaggle---Walmart-forecast-challenge\
+https://github.com/mulargui/Kaggle---Walmart-forecast-challenge
 https://github.com/mulargui/Kaggle-Walmart-fcst-in-Spark
 
 Directories:\
