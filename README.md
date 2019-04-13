@@ -10,7 +10,7 @@ Directories:\
 docker. how to create and manage the container. Extended tensorflow container adding additional libraries\
 k8s. templates to create the service in kubernetes. tested with minikube. Edit setup.bat to point to the directory where you cloned the repo\
 kaggle. all the info related to the challenge\
-src. Source code of the solution and other files I used to explore several aspects of the data\
+src. Source code of the solution and other files I used to explore several aspects of the data 
   * DataPreparation. Massage of the data for the neural network. Things like normalization, adjustments, generate dummies,... Generates new train and test csv (samplews in /data)
   * PredictionNN. The neural network code. Generates prediction.csv
   * SubmissionPreparation. Taakes the prediction and other data and generates Sumission.csv, the file to submit to Kaggle.
