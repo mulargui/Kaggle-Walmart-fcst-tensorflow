@@ -77,6 +77,7 @@ Dec 2012
 	model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=25)
 4/11/2019. increasing the number of epochs to 250 gives a marginal improvement to 606 position
+4/14/2019, Replacing NaN by 0 in the features doesnt help. Position 615.
 	
 	
 	
