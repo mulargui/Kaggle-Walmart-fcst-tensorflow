@@ -2,7 +2,7 @@ Here are notes of ideas explored during the project
 1. DataPreparation. 
 	It puts together all the features we have and also dummifies and normalizes fields. 
 	Tranformed date to year and weekofyear to reflect seasonality.
-	Pending: work with NaN and transform features to floats [0,1]
+	Pending: work with NaNs in features
 2. ExploreDates. 
 	From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
 	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
