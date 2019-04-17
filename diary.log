@@ -78,7 +78,7 @@ Dec 2012
 	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=25)
 7. Increasing the number of epochs to 250 gives a marginal improvement to 606 position
 8. DataPreparation1. Replacing NaN by 0 in the features doesnt help. Position 615.
-9. DataPreparation2. Applied new christmas seasonality model 	
+9. DataPreparation2. Applied new christmas seasonality model. Position 612 :( 	
 	Assumptions:
 	hot week of sales for christmas: week 51
 	Week 52 always has 3 days of sales (as in 2012) - hot sales days
