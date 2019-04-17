@@ -1,9 +1,9 @@
 Here are notes of ideas explored during the project
-4/2/2019 DataPreparation. 
+1. DataPreparation. 
 	It puts together all the features we have and also dummifies and normalizes fields. 
 	Tranformed date to year and weekofyear to reflect seasonality.
 	Pending: work with NaN and transform features to floats [0,1]
-4/3/2019 ExploreDates. 
+2. ExploreDates. 
 	From week of the year and year I cannot reproduce the date. This piece of code works fine for 2010,11 and 12 but not for 2013
 	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
 		dfresult.Year.astype(str).add('-5') ,format='%W%Y-%w')
@@ -11,7 +11,7 @@ Here are notes of ideas explored during the project
 	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try to reverse in the code above it correctly says week 1 is 1/11/2013
 	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result
 	Update: I was able to regenerate the final result without the help of this file - deleting dates.csv
-4/4/2019 Sales Adjustments in DataPreparation
+3. Sales Adjustments in DataPreparation
 	Sales in holidays are weighted 5 times other weeks - worth to have them right.
 	Super Bowl, Labor Day and Thanksgiving always happen in the same day of the week so sales are accurately represented in weeks 6. 36 and 47.
 	That's not the case for Christmas, which is on Dec 25th. Luckily always hapens in week 52, that's good. 
@@ -66,18 +66,18 @@ Dec 2012
 		dailysales = sales on 49 + 50 + 51 +52 /21
 		week 52 += 2 * dailysales
 		week 49 -= 2 * dailysales
-4/10/2019. Looks like Keras works better and faster with float32 instead of float64
+4. Looks like Keras works better and faster with float32 instead of float64
 	https://www.quora.com/When-should-I-use-tf-float32-vs-tf-float64-in-TensorFlow
-4/11/2019. Removed 7 features with NaNs to have a working model and experiment with NN models, epochs,...
+5. Removed 7 features with NaNs to have a working model and experiment with NN models, epochs,...
 	We'll go back to NaNs later.
-4/11/2019. First submission sets me in the 612 position
+6. First submission sets me in the 612 position
 	x_train, x_test, y_train, y_test = train_test_split(x, y,test_size=0.2)
 	model.add(Dense(units=7, activation='relu', input_dim=12))
 	model.add(Dense(units=1, activation='linear'))
 	model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=25)
-4/11/2019. increasing the number of epochs to 250 gives a marginal improvement to 606 position
-4/14/2019, Replacing NaN by 0 in the features doesnt help. Position 615.
+7. Increasing the number of epochs to 250 gives a marginal improvement to 606 position
+8. Replacing NaN by 0 in the features doesnt help. Position 615.
 	
 	
 	
