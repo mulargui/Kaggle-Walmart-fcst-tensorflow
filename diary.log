@@ -8,8 +8,8 @@ Here are notes of ideas explored during the project
 	dfresult['NewDate'] = pd.to_datetime(dfresult.Seasonality.astype(str)+
 		dfresult.Year.astype(str).add('-5') ,format='%W%Y-%w')
 	The reason of the failure is that 2012 has 53 weeks under ISO rules. 
-	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try to reverse in the code above it correctly says week 1 is 1/11/2013
-	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result
+	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try the code above it correctly says week 1 is 1/11/2013
+	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result.
 	Update: I was able to regenerate the final result without the help of this file - deleting dates.csv
 3. Sales Adjustments in DataPreparation
 	Sales in holidays are weighted 5 times other weeks - worth to have them right.
@@ -62,8 +62,7 @@ Dec 2012
 	2010 dailysales = sales on 49 + 50 + 51 /21
 		week 52 += 3 * dailysales
 		week 49 -= 3 * dailysales
-	2011 - this is tricky!
-		dailysales = sales on 49 + 50 + 51 +52 /21
+	2011 - dailysales = sales on 49 + 50 + 51 /21
 		week 52 += 2 * dailysales
 		week 49 -= 2 * dailysales
 4. Looks like Keras works better and faster with float32 instead of float64
@@ -91,6 +90,4 @@ Dec 2012
 	2011 - dailysales = sales on 51 / 7
 		week 52 += 2 * dailysales
 		week 51 -= 2 * dailysales
-	
-	
-	
+10.
