@@ -11,7 +11,13 @@ Here are notes of ideas explored during the project
 	Interesting to_datetime says is week 1 for 1/4/2013 (it should say 53) but when I try the code above it correctly says week 1 is 1/11/2013
 	After quite time spent, I'm generating a dates.csv files to keep date, week, year to regenerate dates in the final result.
 	Update: I was able to regenerate the final result without the help of this file - deleting dates.csv
-3. Sales Adjustments in DataPreparation
+3. ExploreData.
+	Helper code that looks at data ranges of dates, stores and dept.
+4. ExploreNaN.
+	Helper code diving in features.
+5. ExploreSales.
+	Helper code that dives into sale data.
+6. Sales Adjustments in DataPreparation
 	Sales in holidays are weighted 5 times other weeks - worth to have them right.
 	Super Bowl, Labor Day and Thanksgiving always happen in the same day of the week so sales are accurately represented in weeks 6. 36 and 47.
 	That's not the case for Christmas, which is on Dec 25th. Luckily always hapens in week 52, that's good. 
@@ -65,19 +71,19 @@ Dec 2012
 	2011 - dailysales = sales on 49 + 50 + 51 /21
 		week 52 += 2 * dailysales
 		week 49 -= 2 * dailysales
-4. Looks like Keras works better and faster with float32 instead of float64
+7. Looks like Keras works better and faster with float32 instead of float64
 	https://www.quora.com/When-should-I-use-tf-float32-vs-tf-float64-in-TensorFlow
-5. Removed 7 features with NaNs to have a working model and experiment with NN models, epochs,...
+8. Removed 7 features with NaNs to have a working model and experiment with NN models, epochs,...
 	We'll go back to NaNs later.
-6. First submission sets me in the 612 position
+9. First submission sets me in the 612 position
 	x_train, x_test, y_train, y_test = train_test_split(x, y,test_size=0.2)
 	model.add(Dense(units=7, activation='relu', input_dim=12))
 	model.add(Dense(units=1, activation='linear'))
 	model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=25)
-7. Increasing the number of epochs to 250 gives a marginal improvement to 606 position
-8. DataPreparation1. Replacing NaN by 0 in the features doesnt help. Position 615.
-9. DataPreparation2. Applied new christmas seasonality model. Position 612 :( 	
+10. Increasing the number of epochs to 250 gives a marginal improvement to 606 position
+11. DataPreparation1. Replacing NaN by 0 in the features doesnt help. Position 615.
+12. DataPreparation2. Applied new christmas seasonality model. Position 612 :( 	
 	Assumptions:
 	hot week of sales for christmas: week 51
 	Week 52 always has 3 days of sales (as in 2012) - hot sales days
@@ -90,4 +96,4 @@ Dec 2012
 	2011 - dailysales = sales on 51 / 7
 		week 52 += 2 * dailysales
 		week 51 -= 2 * dailysales
-10.
+13.
