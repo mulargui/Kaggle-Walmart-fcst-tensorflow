@@ -98,8 +98,8 @@ Dec 2012
 		week 52 += 2 * dailysales
 		week 51 -= 2 * dailysales
 13.PredictionNN2. The asumption is that a NN is a bad fit for sales forecast.
-	I reduced the features just to seasonality, year, store and dept, the same ones I used in my previous versions.
-	As expected the accuracy was the same 0.04%.
+	I reduced the features just to seasonality, year, store and dept, the same ones I used in my previous work.
+	As expected the accuracy was the same, 0.04%.
 	This confirms the low relevance of the other features as it was detected in previous work.
-	It also confirms that NN is not good a time series dependent data.
+	It also confirms that NN is not good a fit for time series dependent data.
 	Pending to try LTSM and see if there is any difference.
